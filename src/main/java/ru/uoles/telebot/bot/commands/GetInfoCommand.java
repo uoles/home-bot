@@ -15,7 +15,7 @@ public class GetInfoCommand extends BaseCommand {
         try {
             URL url = new URL("http://checkip.amazonaws.com/");
             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-            result = br.readLine();
+            result = "Internet ip: " + br.readLine();
         } catch (Exception e) {
             result = getLogS() + " error: " + e.getMessage();
         }

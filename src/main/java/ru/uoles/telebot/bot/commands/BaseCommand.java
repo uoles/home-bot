@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 import java.io.IOException;
 
 /**
- * Created by Maxim Kulikov on 2018-02-20.
+ * Created by Maksim Kulikov on 2018-02-20.
  */
 public abstract class BaseCommand {
 

@@ -9,7 +9,7 @@
 
     <context:component-scan base-package="ru.uoles.telebot" />
 
-    <bean id="getLastInfo" class="ru.uoles.telebot.bot.commands.GetLastInfoRecCommand" scope="prototype" />
+    <bean id="getInfo" class="ru.uoles.telebot.bot.commands.GetInfoCommand" scope="prototype" />
     <bean id="help" class="ru.uoles.telebot.bot.commands.HelpCommand" scope="prototype" />
     <bean id="restart" class="ru.uoles.telebot.bot.commands.RestartCommand" scope="prototype" />
     <bean id="shutdown" class="ru.uoles.telebot.bot.commands.ShutdownCommand" scope="prototype" />

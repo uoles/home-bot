@@ -1,7 +1,7 @@
 package ru.uoles.telebot.bot.commands;
 
 /**
- * Created by Maxim Kulikov on 2018-02-20.
+ * Created by Maksim Kulikov on 2018-02-20.
  */
 public class HelpCommand extends BaseCommand {
 
@@ -12,10 +12,11 @@ public class HelpCommand extends BaseCommand {
         return new String(
                 "****************************************\n" +
                         "Список доступных команд:\n" +
-                        "Restart - перезагрузка машины\n" +
-                        "Shutdown - выключение машины\n" +
-                        "WakeUp - разбудить компьютер\n" +
-                        "Help - помощь\n" +
+                        "restart - перезагрузка компьютера\n" +
+                        "shutdown - выключение компьютера\n" +
+                        "wakeUp - разбудить компьютер\n" +
+                        "help - помощь\n" +
+                        "getInfo - текущий IP адрес\n" +
                         "****************************************\n"
         );
     }

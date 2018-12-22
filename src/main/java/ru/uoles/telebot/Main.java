@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Created by Maxim Kulikov on 2018-02-19.
+ * Created by Maksim Kulikov on 2018-02-19.
  */
 public class Main {
 

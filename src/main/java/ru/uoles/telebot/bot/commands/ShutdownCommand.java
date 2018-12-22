@@ -3,7 +3,7 @@ package ru.uoles.telebot.bot.commands;
 import java.io.IOException;
 
 /**
- * Created by Maxim Kulikov on 2018-02-19.
+ * Created by Maksim Kulikov on 2018-02-19.
  */
 public class ShutdownCommand extends BaseCommand {
 

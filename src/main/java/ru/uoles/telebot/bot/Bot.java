@@ -1,6 +1,7 @@
 package ru.uoles.telebot.bot;
 
 import org.apache.log4j.Logger;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * Created by Maxim Kulikov on 2018-02-19.
+ * Created by Maksim Kulikov on 2018-02-19.
  */
 public class Bot extends TelegramLongPollingBot {
 
@@ -44,15 +45,12 @@ public class Bot extends TelegramLongPollingBot {
             Long chatId = update.getMessage().getChatId();
 
             String responceMessage = ".";
+            ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
             try {
-                BaseCommand baseCommand = (BaseCommand) Class.forName("ru.uoles.telebot.bot.commands." + commandName + "Command").newInstance();
+                BaseCommand baseCommand = (BaseCommand) context.getBean(commandName);
                 responceMessage = baseCommand.execute();
-            } catch (InstantiationException e) {
-                log.error("Get command class error: " + e.getMessage());
-            } catch (IllegalAccessException e) {
-                log.error("Get command class error: " + e.getMessage());
-            } catch (ClassNotFoundException e) {
-                log.error("Get command class error: " + e.getMessage());
+            } finally {
+                context.close();
             }
 
             if (".".equals(responceMessage) || "".equals(responceMessage)) {
