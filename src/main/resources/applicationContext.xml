@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="ru.uoles.telebot" />
+
+    <bean id="getLastInfo" class="ru.uoles.telebot.bot.commands.GetLastInfoRecCommand" scope="prototype" />
+    <bean id="help" class="ru.uoles.telebot.bot.commands.HelpCommand" scope="prototype" />
+    <bean id="restart" class="ru.uoles.telebot.bot.commands.RestartCommand" scope="prototype" />
+    <bean id="shutdown" class="ru.uoles.telebot.bot.commands.ShutdownCommand" scope="prototype" />
+    <bean id="wakeUp" class="ru.uoles.telebot.bot.commands.WakeUpCommand" scope="prototype" />
+
+</beans>
