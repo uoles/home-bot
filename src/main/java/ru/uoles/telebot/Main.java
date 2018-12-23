@@ -10,6 +10,7 @@ import ru.uoles.telebot.bot.Bot;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
@@ -20,17 +21,25 @@ public class Main {
     private static Logger log = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
-        log.info("Start bot");
+        toLog("Bot loading start.");
 
-        FileInputStream fis;
+        InputStream input = null;
         Properties property = new Properties();
 
         try {
-            fis = new FileInputStream("src/main/resources/bot.properties");
-            property.load(fis);
+            String filename = "bot.properties";
+            input = Main.class.getClassLoader().getResourceAsStream( filename );
+            if (input == null) {
+                toLog("Sorry, unable to find " + filename);
+                return;
+            }
+            property.load(input);
+            toLog("Load properties");
 
             // Initialize Api Context
             ApiContextInitializer.init();
+            toLog("ApiContextInitializer init");
+
             // Instantiate Telegram Bots API
             TelegramBotsApi botsApi = new TelegramBotsApi();
             // Register our bot
@@ -39,17 +48,23 @@ public class Main {
                 options.setProxyType(DefaultBotOptions.ProxyType.HTTP);
                 options.setProxyHost( property.getProperty("proxy.host") );
                 options.setProxyPort( Integer.parseInt(property.getProperty("proxy.port")) );
+                toLog("Set proxy settings");
 
                 botsApi.registerBot(new Bot(options, property));
+                toLog("Register bot");
             } catch (TelegramApiException e) {
-                log.error("Register bot error: " + e.getMessage());
+                toLog("Register bot error: " + e.getMessage());
             }
-        } catch (FileNotFoundException e) {
-            log.info("Main error: " + e.getMessage());
         } catch (IOException e) {
-            log.info("Main error: " + e.getMessage());
+            toLog("Error: " + e.getMessage());
         } finally {
-            log.info("Stop bot.");
+            toLog("Bot loading end.");
+            toLog("---------------------");
         }
+    }
+
+    private static void toLog(String text) {
+        log.info(text);
+        System.out.println(text);
     }
 }

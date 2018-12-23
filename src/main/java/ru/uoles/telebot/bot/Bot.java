@@ -67,6 +67,10 @@ public class Bot extends TelegramLongPollingBot {
             } catch (TelegramApiException e) {
                 log.error("Sending message error: " + e.getMessage());
             }
+
+            System.out.println("-- CommandName: \n" + commandName);
+            System.out.println("-- ResponceMessage: \n" + responceMessage);
+            System.out.println("---------------------");
         }
     }
 
