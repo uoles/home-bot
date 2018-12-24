@@ -7,8 +7,6 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.uoles.telebot.bot.Bot;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -28,7 +26,7 @@ public class Main {
 
         try {
             String filename = "bot.properties";
-            input = Main.class.getClassLoader().getResourceAsStream( filename );
+            input = Main.class.getClassLoader().getResourceAsStream(filename);
             if (input == null) {
                 toLog("Sorry, unable to find " + filename);
                 return;
@@ -46,8 +44,8 @@ public class Main {
             try {
                 DefaultBotOptions options = new DefaultBotOptions();
                 options.setProxyType(DefaultBotOptions.ProxyType.HTTP);
-                options.setProxyHost( property.getProperty("proxy.host") );
-                options.setProxyPort( Integer.parseInt(property.getProperty("proxy.port")) );
+                options.setProxyHost(property.getProperty("proxy.host"));
+                options.setProxyPort(Integer.parseInt(property.getProperty("proxy.port")));
                 toLog("Set proxy settings");
 
                 botsApi.registerBot(new Bot(options, property));
